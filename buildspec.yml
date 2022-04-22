@@ -1,0 +1,45 @@
+version: 0.2
+
+#env:
+  #variables:
+     # key: "value"
+     # key: "value"
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+  #secrets-manager:
+     # key: secret-id:json-key:version-stage:version-id
+     # key: secret-id:json-key:version-stage:version-id
+  #exported-variables:
+     # - variable
+     # - variable
+  #git-credential-helper: yes
+#batch:
+  #fast-fail: true
+  #build-list:
+  #build-matrix:
+  #build-graph:
+phases:
+  install:
+    #If you use the Ubuntu standard image 2.0 or la
+
+runtime-versions:
+      nodejs: 12
+    commands:
+      - echo 'Running all commands to install all the dependencies and to build and start the application.'
+      - apt-get update
+      - apt-get install -y build-essential python
+      - npm install -g lerna
+      - npm install
+  pre_build:
+    commands:
+      - lerna bootstrap --hoist
+      # - command
+  build:
+    commands:				
+      - npm run bootstrap
+      - npm run build			
+      # - command
+  post_build:
+    commands:
+      # - npm run 
